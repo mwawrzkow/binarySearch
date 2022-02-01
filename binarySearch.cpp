@@ -75,10 +75,17 @@ int main(int argc, char **argv)
     {
         printf("%d found at index %d\n", key, std::distance(v.begin(), it));
     }
+    
+    auto start_timer = std::chrono::high_resolution_clock::now();
+    auto it_binary_search = std::binary_search(v.begin(), v.end(), key);
+    auto finish_timer = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = finish - start;
     std::chrono::duration<double> elapsed_stl = finish_stl - start_stl;
+    std::chrono::duration<double> elapsed_timer = finish_timer - start_timer;
     printf("STL Search Steps: %ld\n", std::distance(v.begin(), it));
     printf("Binary Search Time: %f\n", elapsed.count());
     printf("STL Search Time: %f\n", elapsed_stl.count());
+    printf("STL- binarysearch Search Time: %f\n", elapsed_timer.count());
+
     return 0;
 }
