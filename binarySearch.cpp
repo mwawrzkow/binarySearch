@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     printf("Searching for %d in array:\n", key);
     auto start = std::chrono::high_resolution_clock::now();
     int index = binarySearch(arr, size, key, low, high);
-    std::chrono::duration<double> elapsed = finish - start;
+    auto finish = std::chrono::high_resolution_clock::now();
     if (index == -1)
     {
         printf("%d not found\n", key);
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
     {
         printf("%d found at index %d\n", key, index);
     }
-    auto finish = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = finish - start;
     printf("Elapsed time: %f\n", elapsed.count());
     return 0;
 }
