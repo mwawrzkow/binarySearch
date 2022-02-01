@@ -41,14 +41,18 @@ int main(int argc, char **argv)
     auto start = std::chrono::high_resolution_clock::now();
     int size = atoi(argv[1]);
     int *arr = new int[size];
+    //output the initializing array
+    printf("Initializing array:\n");
     for (int i = 0; i < size; i++)
     {
         arr[i] = i;
     }
+    printf("sort array:\n");
     std::sort(arr, arr + size);
     int key = atoi(argv[2]);
     int low = 0;
     int high = size - 1;
+    printf("Searching for %d in array:\n", key);
     int index = binarySearch(arr, size, key, low, high);
     if (index == -1)
     {
