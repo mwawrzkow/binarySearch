@@ -38,7 +38,6 @@ int main(int argc, char **argv)
         print_usage();
         return -1;
     }
-    auto start = std::chrono::high_resolution_clock::now();
     int size = atoi(argv[1]);
     int *arr = new int[size];
     //output the initializing array
@@ -47,13 +46,13 @@ int main(int argc, char **argv)
     {
         arr[i] = i;
     }
-    printf("sort array:\n");
-    std::sort(arr, arr + size);
     int key = atoi(argv[2]);
     int low = 0;
     int high = size - 1;
     printf("Searching for %d in array:\n", key);
+    auto start = std::chrono::high_resolution_clock::now();
     int index = binarySearch(arr, size, key, low, high);
+    std::chrono::duration<double> elapsed = finish - start;
     if (index == -1)
     {
         printf("%d not found\n", key);
@@ -63,7 +62,6 @@ int main(int argc, char **argv)
         printf("%d found at index %d\n", key, index);
     }
     auto finish = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = finish - start;
     printf("Elapsed time: %f\n", elapsed.count());
     return 0;
 }
