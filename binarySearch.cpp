@@ -6,13 +6,10 @@
 template <typename T>
 int binarySearch(T arr[], int size, T key, int low, int high)
 {   
-    //calculate steps for binary search
-    int steps = 0;
     if (low > high)
         return -1;
     while (low <= high)
     {
-        steps++; 
         int m = (low + high) / 2;
         if (arr[m] < key)
         {
@@ -24,7 +21,6 @@ int binarySearch(T arr[], int size, T key, int low, int high)
         }
         else
         {
-            printf("\nBinary Search Steps: %d\n", steps);
             return m;
         }
     }
