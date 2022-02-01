@@ -65,6 +65,8 @@ int main(int argc, char **argv)
     auto start_stl = std::chrono::high_resolution_clock::now();
     auto it = std::lower_bound(v.begin(), v.end(), key);
     auto finish_stl = std::chrono::high_resolution_clock::now();
+    //free 
+    delete[] arr;
     if (it == v.end())
     {
         printf("%d not found\n", key);
