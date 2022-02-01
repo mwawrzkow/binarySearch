@@ -65,9 +65,22 @@ int main(int argc, char **argv)
     {
         printf("%d found at index %d\n", key, index);
     }
+    std::vector<int> v(arr, arr + size);
+    auto start_stl = std::chrono::high_resolution_clock::now();
+    auto it = std::lower_bound(v.begin(), v.end(), key);
+    auto finish_stl = std::chrono::high_resolution_clock::now();
+    if (it == v.end())
+    {
+        printf("%d not found\n", key);
+    }
+    else
+    {
+        printf("%d found at index %d\n", key, std::distance(v.begin(), it));
+    }
     std::chrono::duration<double> elapsed = finish - start;
-    printf("Elapsed time: %f\n", elapsed.count());
-    //calculate steps 
-
+    std::chrono::duration<double> elapsed_stl = finish_stl - start_stl;
+    printf("STL Search Steps: %ld\n", std::distance(v.begin(), it));
+    printf("Binary Search Time: %f\n", elapsed.count());
+    printf("STL Search Time: %f\n", elapsed_stl.count());
     return 0;
 }
